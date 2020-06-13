@@ -4,6 +4,9 @@ A python library (and later, utility) for controlling an Onkyo or Integra stereo
 
 For a general overview of usage, see `test.py`. 
 
+## Requirements
+
+* [pyserial][2]
 
 ## Command list
 
@@ -100,3 +103,4 @@ To dim the screen, `setDimmer('dim')`
 Closes the serial connection to the receiver.
 
 [1]: http://www.schematicsforfree.com/archive/file/Video/DVD%20&%20Other%20Disc%20Players/Onkyo%20-%20Dtr-6%202-Rs-232Codes.pdf
+[2]: https://pyserial.readthedocs.io/en/latest/pyserial.html
