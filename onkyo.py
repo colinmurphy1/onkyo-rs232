@@ -36,6 +36,9 @@ class Onkyo:
         except Exception as e:
             raise Exception(e)
 
+        # Wait 50ms for the receiver to process the command sent
+        time.sleep(0.05)
+
 
     def powerOn(self):
         """ Powers on the unit """

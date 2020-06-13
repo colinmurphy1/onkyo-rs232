@@ -1,6 +1,6 @@
 # Onkyo-RS232
 
-A python library (and later, utility) for controlling an Onkyo or Integra stereo receiver using the Onkyo [RS232 protocol][1].
+A python library (and later, utility) for controlling an Onkyo or Integra stereo receiver using the Onkyo [RS232 protocol][1]. So far it has only been tested on the **Integra DTM-5.9** receiver, but it should work to an extent on all Onkyo/Integra models.
 
 For a general overview of usage, see `test.py`. 
 
@@ -27,6 +27,8 @@ Turns off the receiver.
 ### `setVolume`
 
 Sets volume to the desired level.
+
+Set volume to level 10: `setVolume(10)`
 
 **Not fully implemented yet! You may accidentally set the volume to a level that is too high.**
 
