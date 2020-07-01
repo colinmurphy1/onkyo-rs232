@@ -70,11 +70,17 @@ Implemented options:
 
 Each receiver model has different inputs that are supported. If the input does not exist, it will not change inputs and will remain on the current input. 
 
-### `setFreq`
+### `tuneFreq`
 
 Tunes to the specified frequency. You must specify the band (AM, FM, and in the near future XM and Sirius) and the frequency.
 
-To tune to 93.3 MHz, do `setFreq('fm', 93.3)`. Meanwhile, to tune to 540 KHz, do `setFreq('am', 540)`.
+To tune to 93.3 MHz, do `tuneFreq('fm', 93.3)`. Meanwhile, to tune to 540 KHz, do `tuneFreq('am', 540)`.
+
+### `tunePreset`
+
+Tunes to a specific saved preset. The preset range is from 1 to 40.
+
+To tune to preset 1, do `tunePreset(1)`.
 
 ### `sendTrigger`
 

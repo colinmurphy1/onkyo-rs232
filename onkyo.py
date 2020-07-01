@@ -38,6 +38,7 @@ class Onkyo:
 
         # Wait 50ms for the receiver to process the command sent
         time.sleep(0.05)
+        return 0
 
 
     def powerOn(self):
@@ -58,10 +59,11 @@ class Onkyo:
 
             # Then convert it to a string, and add a 0 if it's a single digit number
             level = str(level).zfill(2)
-            self.sendRawCMD('MVL{}'.format(str(level)))
+            return self.sendRawCMD('MVL{}'.format(str(level)))
         else:
             logging.warning('Volume must be between 0 and 50, it is {}'.format(level))
-    
+            return 1 
+
     def volUp(self):
         """ Increases the volume """
         return self.sendRawCMD('MVLUP')
@@ -119,7 +121,7 @@ class Onkyo:
         return self.sendRawCMD('SLI{}'.format(inputcode))
         
     
-    def setFreq(self, band, freq):
+    def tuneFreq(self, band, freq):
         """ Tunes the stereo to the desired frequency. 
         Specify as a float for a FM frequency (example: 93.3)
         Specify as an integer for an AM frequency (example: 1040)
@@ -130,11 +132,11 @@ class Onkyo:
         # make band lowercase for the sake of simplicity
         band = band.lower()
 
-        if band == 'am':
+        if band == 'am' and type(freq) == int:
             # AM
             freq = str(freq).zfill(5)
             self.setInput('AM')
-        elif band == 'fm':
+        elif band == 'fm' and type(freq) == float:
             # FM
             freq = str(freq).replace('.', '') + '0'
             freq = freq.zfill(5)
@@ -143,9 +145,24 @@ class Onkyo:
             return 1 # invalid band
 
         # tune to the input
-        self.sendRawCMD('TUN{}'.format(freq))
-        return 0
-    
+        return self.sendRawCMD('TUN{}'.format(freq))
+
+    def tunePreset(self, preset):
+        """ Tunes to a specific preset. Range is 1-40
+        """
+        # preset must be between 1 and 40.
+        if 1 <= preset <= 40:
+            # preset is in hexadecimal form
+            preset = format(preset, 'x')
+
+            # preset must always be 2 chars long
+            preset = preset.zfill(2)
+
+            return self.sendRawCMD('PRS{}'.format(preset))
+        else:
+            # Invalid preset
+            return 1
+
     def sendTrigger(self, trigger, power):
         """ Turn on/off a 12V trigger. This may be limited to Integra units only
         trigger: 12v trigger plug A, B, or C
