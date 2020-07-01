@@ -51,18 +51,18 @@ class Onkyo:
 
     def setVolume(self, level):
         """ Sets volume to the desired level from 0-80 """
-        # Volume: !MVLXX, where XX is the volume level from 0-50
-        level = int(level) # must be an integer, as volumes are an even number
 
-        # Make sure volume level is valid
-        if level >= 0 and level <= 50:
+        if 1 <= level <= 80:
+            # Volume level must be in hexadecimal
+            level = format(int(level), 'x')
 
-            # Then convert it to a string, and add a 0 if it's a single digit number
-            level = str(level).zfill(2)
-            return self.sendRawCMD('MVL{}'.format(str(level)))
+            # Volume needs to always be 2 chars
+            level = level.zfill(2)
         else:
-            logging.warning('Volume must be between 0 and 50, it is {}'.format(level))
-            return 1 
+            # volume is out of range
+            return 1
+
+        return self.sendRawCMD('MVL{}'.format(str(level)))
 
     def volUp(self):
         """ Increases the volume """

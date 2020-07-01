@@ -29,11 +29,9 @@ Turns off the receiver.
 
 ### `setVolume`
 
-Sets volume to the desired level.
+Sets volume to the desired level. Range is from 0 to 80.
 
-Set volume to level 10: `setVolume(10)`
-
-**Not fully implemented yet! You may accidentally set the volume to a level that is too high.**
+Set volume to 10: `setVolume(10)`
 
 ### `volUp`
 
