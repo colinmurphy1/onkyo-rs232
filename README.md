@@ -2,7 +2,7 @@
 
 A python library (and later, utility) for controlling an Onkyo or Integra stereo receiver using the Onkyo [RS232 protocol][1]. So far it has only been tested on the **Integra DTM-5.9** receiver, but it should work to an extent on all Onkyo/Integra models.
 
-For a general overview of usage, see `test.py`. 
+For a general overview of usage, see `test.py`.
 
 ## Requirements
 
@@ -68,7 +68,7 @@ Implemented options:
 * XM
 * SIRIUS
 
-Each receiver model has different inputs that are supported. If the input does not exist, it will not change inputs and will remain on the current input. 
+Each receiver model has different inputs that are supported. If the input does not exist, it will not change inputs and will remain on the current input.
 
 ### `tuneFreq`
 

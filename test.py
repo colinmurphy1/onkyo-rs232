@@ -15,11 +15,15 @@ time.sleep(10)
 
 # tune to 540 KHz AM
 time.sleep(1)
-onkyo.setFreq(540)
+onkyo.tuneFreq(540)
 
 # tune to 93.3 MHz FM
 time.sleep(1)
-onkyo.setFreq(93.3)
+onkyo.tuneFreq(93.3)
+
+# Tune to preset 1
+time.sleep(1)
+onkyo.tunePreset(1)
 
 # set volume to 10
 onkyo.setVolume(10)
