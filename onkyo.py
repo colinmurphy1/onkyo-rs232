@@ -52,7 +52,7 @@ class Onkyo:
     def setVolume(self, level):
         """ Sets volume to the desired level from 0-80 """
 
-        if 1 <= level <= 80:
+        if 0 <= level <= 80:
             # Volume level must be in hexadecimal
             level = format(int(level), 'x')
 
