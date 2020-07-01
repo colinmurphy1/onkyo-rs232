@@ -117,35 +117,34 @@ class Onkyo:
         inputcode = str(inputcode).zfill(2)
         
         return self.sendRawCMD('SLI{}'.format(inputcode))
+        
     
-    def setFreq(self, freq):
+    def setFreq(self, band, freq):
         """ Tunes the stereo to the desired frequency. 
         Specify as a float for a FM frequency (example: 93.3)
         Specify as an integer for an AM frequency (example: 1040)
         """
 
-        # base am/fm off data type
-        typ = type(freq)
-        if typ == int:
+        # TODO: Implement Sirius and XM tuning
+
+        # make band lowercase for the sake of simplicity
+        band = band.lower()
+
+        if band == 'am':
             # AM
             freq = str(freq).zfill(5)
-
-            # set input to AM
             self.setInput('AM')
-
-        elif typ == float:
+        elif band == 'fm':
             # FM
             freq = str(freq).replace('.', '') + '0'
             freq = freq.zfill(5)
-
-            # set input to FM
             self.setInput('FM')
-
         else:
-            return 0 # invalid data type
+            return 1 # invalid band
 
+        # tune to the input
         self.sendRawCMD('TUN{}'.format(freq))
-        
+        return 0
     
     def sendTrigger(self, trigger, power):
         """ Turn on/off a 12V trigger. This may be limited to Integra units only

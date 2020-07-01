@@ -72,12 +72,9 @@ Each receiver model has different inputs that are supported. If the input does n
 
 ### `setFreq`
 
-Tunes to the specified frequency.
+Tunes to the specified frequency. You must specify the band (AM, FM, and in the near future XM and Sirius) and the frequency.
 
-* If frequency is specified as a float, or `xxx.x`, it will tune to a FM frequency.
-* If frequency is specified as an integer, or `xxxx`, it will tune to an AM frequency. 
-
-To tune to 93.3 MHz, do `setFreq(93.3)`. Meanwhile, to tune to 540 KHz, do `setFreq(540)`.
+To tune to 93.3 MHz, do `setFreq('fm', 93.3)`. Meanwhile, to tune to 540 KHz, do `setFreq('am', 540)`.
 
 ### `sendTrigger`
 
